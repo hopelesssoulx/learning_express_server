@@ -1,2 +1,8 @@
 ###
 get http://127.0.0.1:3000/
+
+
+###
+post http://127.0.0.1:3000/api/register
+###
+post http://127.0.0.1:3000/api/login
