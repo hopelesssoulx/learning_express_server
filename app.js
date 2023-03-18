@@ -25,6 +25,13 @@ app.use(function (req, res, next) {
 })
 
 
+// 在路由前声明
+// 解析token的中间件
+const { expressjwt: expressJWT } = require('express-jwt')
+const config = require('./config')
+app.use(expressJWT({ secret: config.jwtKey, algorithms: ['HS256'] }).unless({ path: [/^\/api/] }))
+
+
 const userRouter = require('./router/user')
 app.use('/api', userRouter)
 
@@ -34,6 +41,9 @@ const joi = require('joi')
 app.use((e, req, res, next) => {
     if (e instanceof joi.ValidationError) {
         res.cc(e)
+    }
+    if (e.name === 'UnauthorizedError') {
+        res.cc('身份验证失败')
     }
     res.cc(e)       // 未知错误 
 })

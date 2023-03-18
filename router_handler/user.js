@@ -3,7 +3,8 @@
 
 const db = require('../db/index')
 const bcrypt = require('bcryptjs')
-
+const jwt = require('jsonwebtoken')
+const config = require('../config')
 
 // 注册
 exports.register = (req, res) => {
@@ -67,6 +68,13 @@ exports.login = (req, res) => {
             return res.cc('登录失败')
         }
 
-        res.send('login OK')
+        const user = { ...rs[0], password: '', user_pic: '' }
+        const token = jwt.sign(user, config.jwtKey, { expiresIn: config.expiresIn })
+
+        res.send({
+            status: 0,
+            message: '登录成功',
+            token: 'Bearer ' + token
+        })
     })
 }
