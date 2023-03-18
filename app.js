@@ -34,6 +34,8 @@ app.use(expressJWT({ secret: config.jwtKey, algorithms: ['HS256'] }).unless({ pa
 
 const userRouter = require('./router/user')
 app.use('/api', userRouter)
+const userInfoRouter = require('./router/userInfo')
+app.use('/my', userInfoRouter)
 
 
 const joi = require('joi')
