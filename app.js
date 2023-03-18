@@ -29,6 +29,16 @@ const userRouter = require('./router/user')
 app.use('/api', userRouter)
 
 
+const joi = require('joi')
+// 错误级别的中间件
+app.use((e, req, res, next) => {
+    if (e instanceof joi.ValidationError) {
+        res.cc(e)
+    }
+    res.cc(e)       // 未知错误 
+})
+
+
 app.listen(3000, function () {
     console.log('api server running at http://127.0.0.1:3000')
 })

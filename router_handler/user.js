@@ -7,11 +7,12 @@ const bcrypt = require('bcryptjs')
 
 // 注册
 exports.register = (req, res) => {
-    // 判断数据是否存在
     const userInfo = req.body
-    if (!userInfo.username || !userInfo.password) {
-        return res.send({ status: 1, message: '用户名或密码不能为空！' })
-    }
+
+    // // 判断数据是否存在
+    // if (!userInfo.username || !userInfo.password) {
+    //     return res.send({ status: 1, message: '用户名或密码不能为空！' })
+    // }
 
     // 判断用户是否存在
     const sql1 = `select * from ev_users where username=?`
