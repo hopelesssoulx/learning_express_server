@@ -46,5 +46,14 @@ id=6
 &email=abab@abab.com
 
 
+###
+post http://127.0.0.1:3000/my/updateUserPwd
+Content-Type: application/x-www-form-urlencoded
+Authorization: {{token}}
+
+oldPwd=bibibi
+&newPwd=bababa
+
+
 ### variables
 @token = {{login.response.body.token}}
