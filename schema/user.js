@@ -31,3 +31,12 @@ exports.update_user_password_schema = {
         newPwd: joi.not(joi.ref('oldPwd')).concat(password)
     }
 }
+
+
+const avatar = joi.string().dataUri().required()
+
+exports.update_user_avatar_schema = {
+    body: {
+        avatar
+    }
+}
