@@ -69,5 +69,14 @@ Content-Type: application/x-www-form-urlencoded
 Authorization: {{token}}
 
 
+###
+post http://127.0.0.1:3000/my/article/addcates
+Content-Type: application/x-www-form-urlencoded
+Authorization: {{token}}
+
+name=数学
+&alias=ShuXue
+
+
 ### variables
 @token = {{login.response.body.token}}
