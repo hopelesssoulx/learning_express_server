@@ -50,5 +50,23 @@ exports.register = (req, res) => {
 
 // 登录
 exports.login = (req, res) => {
-    res.send('login OK')
+    const userInfo = req.body
+
+    const sql = 'select * from ev_users where username=?'
+    db.query(sql, userInfo.username, (e, rs) => {
+        if (e) {
+            return res.cc(err)
+        }
+        if (rs.length !== 1) {
+            return res.cc('登录失败')
+        }
+
+        // 判断密码
+        const compareRs = bcrypt.compareSync(userInfo.password, rs[0].password)
+        if (!compareRs) {
+            return res.cc('登录失败')
+        }
+
+        res.send('login OK')
+    })
 }

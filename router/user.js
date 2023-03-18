@@ -13,7 +13,7 @@ const { register_login_schema } = require('../schema/user')
 router.post('/register', expressJoi(register_login_schema), userHandler.register)
 
 // 登录
-router.post('/login', userHandler.login)
+router.post('/login', expressJoi(register_login_schema), userHandler.login)
 
 
 module.exports = router
