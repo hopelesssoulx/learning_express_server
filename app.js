@@ -36,6 +36,8 @@ const userRouter = require('./router/user')
 app.use('/api', userRouter)
 const userInfoRouter = require('./router/userInfo')
 app.use('/my', userInfoRouter)
+const artCateRouter = require('./router/artcate')
+app.use('/my/article', artCateRouter)
 
 
 const joi = require('joi')
