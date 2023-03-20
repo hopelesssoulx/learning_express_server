@@ -70,6 +70,25 @@ exports.deleteCateById = (req, res) => {
             return res.cc('删除文章分类失败')
         }
 
-        res.send('ok')
+        res.send('删除文章分类成功')
+    })
+}
+
+// 获取文章分类byId
+exports.getArtCateById = (req, res) => {
+    const sql = 'select * from ev_article_cate where id=?'
+    db.query(sql, req.params.id, (e, rs) => {
+        if (e) {
+            return res.cc(e)
+        }
+        if (rs.length !== 1) {
+            return res.cc('获取文章分类失败')
+        }
+
+        res.send({
+            status: 0,
+            message: '获取文章分类成功',
+            data: rs
+        })
     })
 }

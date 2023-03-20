@@ -20,3 +20,9 @@ exports.delete_cate_scheme = {
         id
     }
 }
+
+exports.get_cate_by_id_cshema = {
+    params: {
+        id
+    }
+}

@@ -6,7 +6,7 @@ const artCate_handler = require('../router_handler/artcate')
 
 
 const expressJoi = require('@escook/express-joi')
-const { add_cate_schema, delete_cate_scheme } = require('../schema/artcate')
+const { add_cate_schema, delete_cate_scheme, get_cate_by_id_cshema } = require('../schema/artcate')
 
 
 // 获取文章分类数据
@@ -17,6 +17,9 @@ router.post('/addcates', expressJoi(add_cate_schema), artCate_handler.addArtCate
 
 // 删除文章分类
 router.get('/deleteCates/:id', expressJoi(delete_cate_scheme), artCate_handler.deleteCateById)
+
+// 获取文章分类ById
+router.get('/cate/:id', expressJoi(get_cate_by_id_cshema), artCate_handler.getArtCateById)
 
 
 module.exports = router
