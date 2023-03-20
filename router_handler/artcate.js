@@ -58,3 +58,18 @@ exports.addArtCates = (req, res) => {
         }
     )
 }
+
+// 删除文章分类
+exports.deleteCateById = (req, res) => {
+    const sql = 'update ev_article_cate set is_delete=1 where id=?'
+    db.query(sql, req.params.id, (e, rs) => {
+        if (e) {
+            return res.cc(e)
+        }
+        if (rs.affectedRows !== 1) {
+            return res.cc('删除文章分类失败')
+        }
+
+        res.send('ok')
+    })
+}
