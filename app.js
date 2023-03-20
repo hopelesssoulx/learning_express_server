@@ -32,13 +32,17 @@ const config = require('./config')
 app.use(expressJWT({ secret: config.jwtKey, algorithms: ['HS256'] }).unless({ path: [/^\/api/] }))
 
 
+app.use('/uploads', express.static('./uploads'))
+
+
 const userRouter = require('./router/user')
 app.use('/api', userRouter)
 const userInfoRouter = require('./router/userInfo')
 app.use('/my', userInfoRouter)
 const artCateRouter = require('./router/artcate')
 app.use('/my/article', artCateRouter)
-
+const articleRouter = require('./router/article')
+app.use('/my/article', articleRouter)
 
 const joi = require('joi')
 // 错误级别的中间件

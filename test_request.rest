@@ -100,5 +100,34 @@ Id=4
 &alias=YinYue
 
 
+###
+post http://127.0.0.1:3000/my/article/addArticle
+Authorization: {{token}}
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryAbaaba
+
+------WebKitFormBoundaryAbaaba
+Content-Disposition: form-data; name="title"
+
+title
+------WebKitFormBoundaryAbaaba
+Content-Disposition: form-data; name="cate_id"
+
+1
+------WebKitFormBoundaryAbaaba
+Content-Disposition: form-data; name="content"
+
+content
+------WebKitFormBoundaryAbaaba
+Content-Disposition: form-data; name="state"
+
+草稿
+------WebKitFormBoundaryAbaaba
+Content-Disposition: form-data; name="cover_img"; filename="1.jpg"
+Content-Type: image/png
+
+< ../uploads/1.jpg
+------WebKitFormBoundaryAbaaba--
+
+
 ### variables
 @token = {{login.response.body.token}}
