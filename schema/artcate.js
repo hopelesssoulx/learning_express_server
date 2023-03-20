@@ -21,8 +21,16 @@ exports.delete_cate_scheme = {
     }
 }
 
-exports.get_cate_by_id_cshema = {
+exports.get_cate_by_id_schema = {
     params: {
         id
+    }
+}
+
+exports.update_cate_by_id_schema = {
+    body: {
+        Id: id,
+        name,
+        alias
     }
 }
