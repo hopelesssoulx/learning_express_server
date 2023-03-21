@@ -55,7 +55,7 @@ exports.login = (req, res) => {
 
     const sql = 'select * from ev_users where username=?'
     db.query(sql, userInfo.username, (e, rs) => {
-        if (e) return res.cc(err)
+        if (e) return res.cc(e)
         if (rs.length !== 1) return res.cc('登录失败')
 
 

@@ -43,7 +43,7 @@ exports.addArtCates = (req, res) => {
             // 写入
             const sql = 'insert into ev_article_cate set ?'
             db.query(sql, req.body, (e, rs) => {
-                if (e) return res.cc(err)
+                if (e) return res.cc(e)
 
                 if (rs.affectedRows !== 1) return res.cc('新增文章分类失败')
 
